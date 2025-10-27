@@ -11,6 +11,7 @@ from urllib.request import urlretrieve
 
 import matplotlib.pyplot as plt
 import pandas as pd
+
 from oss4climate.src.parsers.git_platforms.github_io import GithubScraper
 
 DATA_FOLDER = ".data"
@@ -28,7 +29,7 @@ projects_xlsx_url = r"https://api.getgrist.com/o/docs/api/docs/gSscJkc5Rb1Rw45gh
 # Ensuring folders exist
 try:
     os.rmdir(RESULTS_FOLDER)
-except:
+except Exception:
     pass
 for i in [DATA_FOLDER, RESULTS_FOLDER]:
     if not os.path.exists(i):
@@ -212,7 +213,7 @@ plot_histogram(
 
 # Which projects are funded?
 funded_projects = df_projects_augmented.loc[
-    df_projects_augmented["augmented_is_funded"] == True, :
+    df_projects_augmented["augmented_is_funded"], :
 ].copy()
 
 n_funded = len(funded_projects)

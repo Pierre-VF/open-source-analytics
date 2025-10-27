@@ -1,0 +1,7 @@
+jinja2
+tqdm
+pydantic-settings
+python-dotenv
+pydantic-ai[mistralai]
+pandas
+openpyxl
