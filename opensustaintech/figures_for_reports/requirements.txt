@@ -1,0 +1,4 @@
+oss4climate @ git+https://github.com/Pierre-VF/oss4climate@6ad0aae1eb21efbab5a1954ef8b529c899b80cad
+matplotlib>=3.10.6
+scikit-learn>=1.7.2
+openpyxl
