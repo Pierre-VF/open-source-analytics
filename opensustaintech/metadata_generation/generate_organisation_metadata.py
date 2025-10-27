@@ -84,7 +84,7 @@ cache = settings.disk_cache
 mm = MistralModel(settings.MISTRAL_MODEL)
 llm_agent = Agent(mm)
 
-input_file = f"{settings.INPUT_FOLDER}/orgs.csv"
+input_file = f"{settings.INPUT_FOLDER}/orgs.xlsx"
 output_file = f"{settings.OUTPUT_FOLDER}/orgs_classified.json"
 output_file_csv = output_file.replace(".json", ".csv")
 
@@ -93,9 +93,12 @@ output_file_csv = output_file.replace(".json", ".csv")
 # Downloading the organisation file if not found locally
 _f_download_if_missing(organisations_xlsx_url, input_file)
 
-
 # ------------------------------------------------------------------------------------
+
 df_orgs = pd.read_excel(input_file)
+print(" ")
+print(f"Found {len(df_orgs)} organisations to process")
+print(" ")
 
 
 def _f(url) -> dict:
@@ -162,7 +165,7 @@ df_out[
 ].sort_values("Confidence", ascending=False).to_csv(output_file_csv)
 
 # ------------------------------------------------------------------------------------
-print("Metadata generation completed")
+print(f"Metadata generation completed (see output in {output_file_csv})")
 # ------------------------------------------------------------------------------------
 
 #
